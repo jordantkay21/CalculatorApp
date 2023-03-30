@@ -70,7 +70,7 @@ public class CalculationManager : MonoSingleton<CalculationManager>
         {
             case "+":
                 result = _num1 + _num2;
-                equation = equation + " = " + result;
+                equation = equation + "=" + result;
                 DisplayManager.Instance.DisplayAnswer(result);
                 SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();
@@ -78,7 +78,7 @@ public class CalculationManager : MonoSingleton<CalculationManager>
                 break;
             case "-":
                 result = _num1 - _num2;
-                equation = equation + " = " + result;
+                equation = equation +  "=" + result;
                 DisplayManager.Instance.DisplayAnswer(result);
                 SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();
@@ -86,7 +86,7 @@ public class CalculationManager : MonoSingleton<CalculationManager>
                 break;
             case "x":
                 result = _num1 * _num2;
-                equation = equation + " = " + result;
+                equation = equation + "=" + result;
                 DisplayManager.Instance.DisplayAnswer(result);
                 SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();
@@ -94,7 +94,7 @@ public class CalculationManager : MonoSingleton<CalculationManager>
                 break;
             case "/":
                 result = _num1 / _num2;
-                equation = equation + " = " + result;
+                equation = equation + "=" + result;
                 DisplayManager.Instance.DisplayAnswer(result);
                 SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();

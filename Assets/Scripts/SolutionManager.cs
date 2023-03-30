@@ -18,6 +18,7 @@ public class SolutionManager : MonoSingleton<SolutionManager>
 
         stackSolution.Push(_result);
         UpdateTheLabels();
+        AddToArray();
     }
 
     private void UpdateTheLabels()
@@ -31,9 +32,17 @@ public class SolutionManager : MonoSingleton<SolutionManager>
             if (index > 5)
                 break;
         }
+    }
+
+    private void AddToArray()
+    {
+        int index = 0;
         foreach (string result in stackSolution)
         {
             _solutionArray[index] = result;
+            index++;
+            if (index > 5)
+                break;
         }
     }
 
