@@ -18,6 +18,7 @@ public class SolutionManager : MonoSingleton<SolutionManager>
 
         stackSolution.Push(_result);
         UpdateTheLabels();
+        AddToArray();
     }
 
     private void UpdateTheLabels()
@@ -29,21 +30,33 @@ public class SolutionManager : MonoSingleton<SolutionManager>
             StackTextboxes[index].text = result;
             index++;
             if (index > 5)
+            {
+                index = 0;
                 break;
+            }
         }
+    }
+    private void AddToArray()
+    {
+        int index = 0;
         foreach (string result in stackSolution)
         {
             _solutionArray[index] = result;
+            index++;
+            if (index > 5)
+            {
+                index = 0;
+                break;
+            }
         }
     }
-
     public void GetSolution(int value)
     {
-        Debug.Log("being called");
+        Debug.Log("GetSolution is being called");
         string[] equation = _solutionArray[value].Split('=');
         ButtonManager.Instance.AddValue(equation[1]);
 
-        Debug.Log("_solutionArray["+value+"] is..." + _solutionArray[value]);
+        Debug.Log("_solutionArray[" + value + "] is..." + _solutionArray[value]);
 
     }
 
@@ -51,7 +64,7 @@ public class SolutionManager : MonoSingleton<SolutionManager>
     {
         foreach (TextMeshProUGUI text in textboxes)
             text.text = "";
-       
+
     }
 
     public void ClearStack()
@@ -59,10 +72,4 @@ public class SolutionManager : MonoSingleton<SolutionManager>
         ResetTextboxes(StackTextboxes);
         stackSolution.Clear();
     }
-
-                
-
-    
-
-
 }
