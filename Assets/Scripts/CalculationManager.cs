@@ -10,7 +10,6 @@ public class CalculationManager : MonoSingleton<CalculationManager>
     private float _num2;
     private string _chosenOperator;
 
-    private float _result;
     private bool _operatorChosen;
 
     /// <summary>
@@ -62,35 +61,42 @@ public class CalculationManager : MonoSingleton<CalculationManager>
     /// <param name="num2S\">Second number entered by the user</param>
     private void SolveEquation(string num1S, string num2S)
     {
+        string equation = _num1String + _chosenOperator + _num2String;
+        float result;
+
         _num1 = float.Parse(num1S, System.Globalization.NumberStyles.Number);
         _num2 = float.Parse(num2S, System.Globalization.NumberStyles.Number);
         switch (_chosenOperator)
         {
             case "+":
-                _result = _num1 + _num2;
-                DisplayManager.Instance.DisplayAnswer(_result);
-                SolutionManager.Instance.AddToStack(_result.ToString());
+                result = _num1 + _num2;
+                equation = equation + " = " + result;
+                DisplayManager.Instance.DisplayAnswer(result);
+                SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
             case "-":
-                _result = _num1 - _num2;
-                DisplayManager.Instance.DisplayAnswer(_result);
-                SolutionManager.Instance.AddToStack(_result.ToString());
+                result = _num1 - _num2;
+                equation = equation + " = " + result;
+                DisplayManager.Instance.DisplayAnswer(result);
+                SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
             case "x":
-                _result = _num1 * _num2;
-                DisplayManager.Instance.DisplayAnswer(_result);
-                SolutionManager.Instance.AddToStack(_result.ToString());
+                result = _num1 * _num2;
+                equation = equation + " = " + result;
+                DisplayManager.Instance.DisplayAnswer(result);
+                SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
             case "/":
-                _result = _num1 / _num2;
-                DisplayManager.Instance.DisplayAnswer(_result);
-                SolutionManager.Instance.AddToStack(_result.ToString());
+                result = _num1 / _num2;
+                equation = equation + " = " + result;
+                DisplayManager.Instance.DisplayAnswer(result);
+                SolutionManager.Instance.AddToStack(equation);
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
