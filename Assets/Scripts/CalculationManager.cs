@@ -69,28 +69,35 @@ public class CalculationManager : MonoSingleton<CalculationManager>
             case "+":
                 _result = _num1 + _num2;
                 DisplayManager.Instance.DisplayAnswer(_result);
+                SolutionManager.Instance.AddToStack(_result.ToString());
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
             case "-":
                 _result = _num1 - _num2;
                 DisplayManager.Instance.DisplayAnswer(_result);
+                SolutionManager.Instance.AddToStack(_result.ToString());
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
             case "x":
                 _result = _num1 * _num2;
                 DisplayManager.Instance.DisplayAnswer(_result);
+                SolutionManager.Instance.AddToStack(_result.ToString());
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
             case "/":
                 _result = _num1 / _num2;
                 DisplayManager.Instance.DisplayAnswer(_result);
+                SolutionManager.Instance.AddToStack(_result.ToString());
                 DisplayManager.Instance.ClearEquation();
                 ClearCalculator();
                 break;
 
         }
+
     }
+
+    
 }

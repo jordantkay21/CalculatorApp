@@ -5,6 +5,12 @@ using UnityEngine.InputSystem;
 
 public class ButtonManager : MonoSingleton<ButtonManager>
 {
+    [SerializeField]
+    private GameObject _numKeyboard;
+    [SerializeField]
+    private GameObject _QueKeyboard;
+
+    private bool _isNumKeyboard = true;
     /// <summary>
     /// Pushes value of numerical button pressed to the equation 
     /// </summary>
@@ -36,5 +42,21 @@ public class ButtonManager : MonoSingleton<ButtonManager>
     public void SolveEquation()
     {
         CalculationManager.Instance.EqualsPressed();
+    }
+
+    public void SwitchKeyboard()
+    {
+        if(_isNumKeyboard == true)
+        {
+            _numKeyboard.SetActive(false);
+            _QueKeyboard.SetActive(true);
+            _isNumKeyboard = false;
+        }
+        else
+        {
+            _numKeyboard.SetActive(true);
+            _QueKeyboard.SetActive(false);
+            _isNumKeyboard = true;
+        }
     }
 }
