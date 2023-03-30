@@ -11,6 +11,8 @@ public class ButtonManager : MonoSingleton<ButtonManager>
     private GameObject _QueKeyboard;
 
     private bool _isNumKeyboard = true;
+
+    #region NumericalKeyboard
     /// <summary>
     /// Pushes value of numerical button pressed to the equation 
     /// </summary>
@@ -44,9 +46,11 @@ public class ButtonManager : MonoSingleton<ButtonManager>
         CalculationManager.Instance.EqualsPressed();
     }
 
+    #endregion
+
     public void SwitchKeyboard()
     {
-        if(_isNumKeyboard == true)
+        if (_isNumKeyboard == true)
         {
             _numKeyboard.SetActive(false);
             _QueKeyboard.SetActive(true);
@@ -59,4 +63,17 @@ public class ButtonManager : MonoSingleton<ButtonManager>
             _isNumKeyboard = true;
         }
     }
+
+    #region QueueKeyboard
+
+    //Button needs to...
+    //Step One: grab current value of result
+    //Step Two: fill current number of result
+    //Step Three: display current number
+
+    public void SetValue(int value)
+    {
+        SolutionManager.Instance.GetSolution(value);
+    }
+    #endregion
 }

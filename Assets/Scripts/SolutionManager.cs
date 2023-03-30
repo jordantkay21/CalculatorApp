@@ -6,6 +6,7 @@ using TMPro;
 public class SolutionManager : MonoSingleton<SolutionManager>
 {
     public TextMeshProUGUI[] StackTextboxes;
+    public string[] _solutionArray = new string[5];
 
     private Stack<string> stackSolution = new();
 
@@ -22,7 +23,7 @@ public class SolutionManager : MonoSingleton<SolutionManager>
     private void UpdateTheLabels()
     {
         int index = 0;
-        ClearTextboxes(StackTextboxes);
+        ResetTextboxes(StackTextboxes);
         foreach (string result in stackSolution)
         {
             StackTextboxes[index].text = result;
@@ -30,17 +31,32 @@ public class SolutionManager : MonoSingleton<SolutionManager>
             if (index > 5)
                 break;
         }
+        foreach (string result in stackSolution)
+        {
+            _solutionArray[index] = result;
+        }
     }
 
-    private void ClearTextboxes(TextMeshProUGUI[] textboxes)
+    public void GetSolution(int value)
+    {
+        Debug.Log("being called");
+        string[] equation = _solutionArray[value].Split('=');
+        ButtonManager.Instance.AddValue(equation[1]);
+
+        Debug.Log("_solutionArray["+value+"] is..." + _solutionArray[value]);
+
+    }
+
+    private void ResetTextboxes(TextMeshProUGUI[] textboxes)
     {
         foreach (TextMeshProUGUI text in textboxes)
             text.text = "";
+       
     }
 
     public void ClearStack()
     {
-        ClearTextboxes(StackTextboxes);
+        ResetTextboxes(StackTextboxes);
         stackSolution.Clear();
     }
 
