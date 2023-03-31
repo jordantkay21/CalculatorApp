@@ -1,7 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// V1.0
+/// Manager to handle the "brains" of the calculation of inputted equations
+/// </summary>
 
+//V1.1 Updates --> Sends equation to SolutionManager
 public class CalculationManager : MonoSingleton<CalculationManager>
 {
     private string _num1String;

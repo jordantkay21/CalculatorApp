@@ -2,7 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+/// <summary>
+/// V1.0
+/// Manager to handle UI elements and values to display
+/// </summary>
+ 
+//V1.1 Updates --> N/A
 public class DisplayManager : MonoSingleton<DisplayManager>
 {
     [SerializeField]

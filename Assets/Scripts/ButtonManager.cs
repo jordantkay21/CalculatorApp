@@ -2,7 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+/// <summary>
+/// V1.0
+/// Manager to handle all button functions
+/// </summary>
 
+//V1.1 Updates --> Cability to Switch between Keyboards & New method for recent solution buttons to be assigned to
 public class ButtonManager : MonoSingleton<ButtonManager>
 {
     [SerializeField]
@@ -47,7 +52,9 @@ public class ButtonManager : MonoSingleton<ButtonManager>
     }
 
     #endregion
-
+    /// <summary>
+    /// Switches UI Keybaord to either numerical or solutions
+    /// </summary>
     public void SwitchKeyboard()
     {
         if (_isNumKeyboard == true)
@@ -65,12 +72,11 @@ public class ButtonManager : MonoSingleton<ButtonManager>
     }
 
     #region QueueKeyboard
-
-    //Button needs to...
-    //Step One: grab current value of result
-    //Step Two: fill current number of result
-    //Step Three: display current number
-
+    /// <summary>
+    /// V1.1
+    /// Sets value of UI solution to the index value we need
+    /// </summary>
+    /// <param name="value">index value</param>
     public void SetValue(int value)
     {
         SolutionManager.Instance.GetSolution(value);
