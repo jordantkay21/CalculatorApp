@@ -2,29 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
+namespace Calculator
 {
-    private static T _instance;
-    public static T Instance
+    public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T>
     {
-        get
+        private static T _instance;
+        public static T Instance
         {
-            if (_instance == null)
-                Debug.Log(typeof(T).ToString() + " is NULL");
+            get
+            {
+                if (_instance == null)
+                    Debug.Log(typeof(T).ToString() + " is NULL");
 
-            return _instance;
+                return _instance;
+            }
+        }
+
+        private void Awake()
+        {
+            _instance = (T)this;
+
+            Init();
+        }
+
+        public virtual void Init()
+        {
+            //optional to override
         }
     }
-
-    private void Awake()
-    {
-        _instance = (T)this;
-
-        Init();
-    }
-
-    public virtual void Init()
-    {
-        //optional to override
-    }
 }
+
