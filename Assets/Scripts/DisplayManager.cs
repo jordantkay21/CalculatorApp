@@ -12,9 +12,14 @@ public class DisplayManager : MonoSingleton<DisplayManager>
 {
     [SerializeField]
     private TextMeshProUGUI _displayText;
+    [SerializeField]
+    private GameObject _numKey;
+    [SerializeField]
+    private GameObject _queKey;
     private string _equation;
+    private bool _isNumKey = true;
 
-
+    #region DisplayPanelManager
     /// <summary>
     /// Adds the numerical button value to the display
     /// </summary>
@@ -45,5 +50,43 @@ public class DisplayManager : MonoSingleton<DisplayManager>
         string resultString = result.ToString();
         _displayText.SetText(resultString);
     }
+    #endregion
+    #region Keyboard Manager
+    /// <summary>
+    /// Logic to switch between numerical keyboard and recent solutions keyboard
+    /// </summary>
+    public void SwitchDisplay()
+    {
+        if (_isNumKey == true)
+        {
+            DisplayNumberKeyboard(false);
+            DisplayQueKeyboard(true);
+            _isNumKey = false;
+        }
+        else
+        {
+            DisplayNumberKeyboard(true);
+            DisplayQueKeyboard(false);
+            _isNumKey = true;
+        }
+    }
+    /// <summary>
+    /// Turn NumberKeyboard on/off
+    /// </summary>
+    /// <param name="onOff">on=true | off=false</param>
+    public void DisplayNumberKeyboard(bool onOff)
+    {
+        _numKey.SetActive(onOff);
+    }
+    /// <summary>
+    /// Turn SoultionsKeyboard on/off
+    /// </summary>
+    /// <param name="onOff">on=true | off=false</param>
+    public void DisplayQueKeyboard(bool onOff)
+    {
+        _queKey.SetActive(onOff);
+    }
+
+    #endregion
 }
 

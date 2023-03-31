@@ -53,22 +53,13 @@ public class ButtonManager : MonoSingleton<ButtonManager>
 
     #endregion
     /// <summary>
+    /// V1.1
     /// Switches UI Keybaord to either numerical or solutions
+    /// Logic is held within DisplayManager
     /// </summary>
     public void SwitchKeyboard()
     {
-        if (_isNumKeyboard == true)
-        {
-            _numKeyboard.SetActive(false);
-            _QueKeyboard.SetActive(true);
-            _isNumKeyboard = false;
-        }
-        else
-        {
-            _numKeyboard.SetActive(true);
-            _QueKeyboard.SetActive(false);
-            _isNumKeyboard = true;
-        }
+        DisplayManager.Instance.SwitchDisplay();
     }
 
     #region QueueKeyboard
